@@ -1,0 +1,80 @@
+{
+  "collectionName": "components_sections_contact_sections",
+  "info": {
+    "displayName": "ContactSection",
+    "icon": "columns",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "contact_email": {
+      "type": "email",
+      "required": true
+    },
+    "contact_email_title": {
+      "type": "string",
+      "required": true
+    },
+    "contact_address": {
+      "type": "text",
+      "required": true
+    },
+    "contact_address_title": {
+      "type": "string"
+    },
+    "contact_phone_title": {
+      "type": "string",
+      "required": true
+    },
+    "contact_phone": {
+      "type": "string",
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "text",
+      "required": true
+    },
+    "name_area": {
+      "type": "string",
+      "required": true
+    },
+    "email_area": {
+      "type": "string",
+      "required": true
+    },
+    "phone_area": {
+      "type": "string",
+      "required": true
+    },
+    "subject_area": {
+      "type": "string",
+      "required": true
+    },
+    "message_area": {
+      "type": "string",
+      "required": true
+    },
+    "socials": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.social-icon"
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button-line"
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "collectionName": "components_sections_feature_sections",
+  "info": {
+    "displayName": "FeatureSection",
+    "icon": "anchor",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "richtext",
+      "required": true
+    },
+    "image_loc": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right"
+      ],
+      "default": "left",
+      "required": true
+    },
+    "photo": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button-line"
+    },
+    "class": {
+      "type": "enumeration",
+      "enum": [
+        "bg-f7fafd",
+        "null"
+      ],
+      "default": "null",
+      "required": false
+    }
+  }
+}

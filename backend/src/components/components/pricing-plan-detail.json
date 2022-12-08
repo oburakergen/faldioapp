@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_components_pricing_plan_details",
+  "info": {
+    "displayName": "PricingPlanDetail",
+    "icon": "arrow-alt-circle-left"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "active": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}

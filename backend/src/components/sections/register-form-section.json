@@ -1,0 +1,40 @@
+{
+  "collectionName": "components_sections_register_form_sections",
+  "info": {
+    "displayName": "RegisterFormSection",
+    "icon": "chalkboard-teacher",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "username_title": {
+      "type": "string",
+      "required": true
+    },
+    "username_placeholder": {
+      "type": "string",
+      "required": true
+    },
+    "email_title": {
+      "type": "string",
+      "required": true
+    },
+    "email_placeholder": {
+      "type": "string",
+      "required": true
+    },
+    "password_title": {
+      "type": "string",
+      "required": true
+    },
+    "password_placeholder": {
+      "type": "string",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button-line"
+    }
+  }
+}

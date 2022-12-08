@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_components_boxes_areas",
+  "info": {
+    "displayName": "BoxesArea",
+    "icon": "archway"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "class": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "text",
+      "required": true,
+      "maxLength": 110,
+      "minLength": 90
+    }
+  }
+}

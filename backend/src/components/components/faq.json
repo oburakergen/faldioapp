@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_components_faqs",
+  "info": {
+    "displayName": "Faq",
+    "icon": "baby"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "detail": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

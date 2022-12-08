@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_sections_pricing_sections",
+  "info": {
+    "displayName": "PricingSection",
+    "icon": "archway",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "text",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button-line"
+    },
+    "pricing_detail": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.pricing-plan-detail"
+    },
+    "pricing_table": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::pricing.pricing"
+    }
+  }
+}

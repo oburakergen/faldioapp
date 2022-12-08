@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_sections_funfact_sections",
+  "info": {
+    "displayName": "FunfactSection",
+    "icon": "align-left",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "text"
+    },
+    "button_title": {
+      "type": "string",
+      "required": true
+    },
+    "button_detail": {
+      "type": "string",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button-line"
+    },
+    "counter": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.counter"
+    },
+    "photo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}

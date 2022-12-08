@@ -1,0 +1,33 @@
+{
+  "collectionName": "components_shared_main_banner_sections",
+  "info": {
+    "displayName": "MainBannerSection",
+    "icon": "ad",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "detail": {
+      "type": "richtext"
+    },
+    "button": {
+      "type": "component",
+      "repeatable": false,
+      "component": "components.button-line"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "boxes_areas": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.boxes-area"
+    }
+  }
+}

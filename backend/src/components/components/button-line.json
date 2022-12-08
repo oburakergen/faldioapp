@@ -1,0 +1,28 @@
+{
+  "collectionName": "components_shared_button_lines",
+  "info": {
+    "displayName": "ButtonLine",
+    "icon": "equals"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "default": "button"
+    },
+    "url": {
+      "type": "string",
+      "required": true,
+      "default": "#"
+    },
+    "icon": {
+      "type": "string"
+    },
+    "class": {
+      "type": "string",
+      "default": "btn btn-primary",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_components_counters",
+  "info": {
+    "displayName": "counter",
+    "icon": "allergies"
+  },
+  "options": {},
+  "attributes": {
+    "count": {
+      "type": "integer"
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

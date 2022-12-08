@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_sections_faq_sections",
+  "info": {
+    "displayName": "FaqSection",
+    "icon": "bus-alt"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "text",
+      "required": true
+    },
+    "detail": {
+      "type": "text"
+    },
+    "faq": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.faq"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_components_social_icons",
+  "info": {
+    "displayName": "SocialIcon",
+    "icon": "pager"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "url": {
+      "type": "text",
+      "required": true
+    },
+    "icon": {
+      "type": "string",
+      "required": true
+    },
+    "class": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
