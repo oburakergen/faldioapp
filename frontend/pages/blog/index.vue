@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageTitle page-title="Blog Right Sidebar" />
+    <PageTitle />
     <BlogRightSidebar />
   </div>
 </template>

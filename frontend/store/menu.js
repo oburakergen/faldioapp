@@ -1,11 +1,15 @@
 
 const state = () => ({
-    menu: []
+    menu: [],
+    currentMenu: {}
 });
 
 const mutations = {
     setMenu (state, payload) {
         state.menu = payload;
+    },
+    setCurrentMenu (state, payload) {
+        state.currentMenu = payload;
     }
 };
 
@@ -16,6 +20,27 @@ const actions = {
         ).then(res => res);
 
         commit('setMenu', t.data);
+    },
+    currentMenu ({ state, commit }, params) {
+        const menu = state.menu.map((item) => {
+            return item.attributes.items.data.map((value) => {
+                if (value.attributes.url === params) {
+                    return value.attributes;
+                }
+
+                return false;
+            }).filter(Boolean);
+        }).filter(Boolean);
+
+        commit('setCurrentMenu', (menu.map((item) => {
+            if ((item || [])[0]?.url) {
+                return item[0];
+            }
+
+            return false;
+        }).filter(Boolean))[0]);
+
+        return menu;
     }
 };
 

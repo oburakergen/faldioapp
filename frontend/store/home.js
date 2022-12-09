@@ -1,11 +1,16 @@
+const { core } = require('../core');
+
 const state = () => ({
     mainBanner: {},
     boxesArea: [],
     registerArea: {},
-    topUser: {},
+    feedback: {},
     funfact: {},
     feature: [],
-    freeTrial: {}
+    pricing: {},
+    blog: [],
+    freeTrial: {},
+    homeSeo: {}
 });
 
 const mutations = {
@@ -18,8 +23,8 @@ const mutations = {
     setRegisterArea (state, payload) {
         state.registerArea = payload;
     },
-    setTopUser (state, payload) {
-        state.registerArea = payload;
+    setFeedback (state, payload) {
+        state.feedback = payload;
     },
     setFunfactArea (state, payload) {
         state.funfact = payload;
@@ -27,8 +32,17 @@ const mutations = {
     setFeatureArea (state, payload) {
         state.feature = payload;
     },
+    setPricingArea (state, payload) {
+        state.pricing = payload;
+    },
+    setBlog (state, payload) {
+        state.blog = payload;
+    },
     setFreeTrialArea (state, payload) {
         state.freeTrial = payload;
+    },
+    setHomeSeo (state, payload) {
+        state.homeSeo = payload;
     }
 };
 
@@ -39,9 +53,13 @@ const actions = {
         ).then(res => res);
         const data = response?.data?.attributes || {};
 
-        commit('setFunfactArea', data?.fuctact?.shift());
-        commit('setFeatureArea', data?.feature);
-        commit('setFreeTrialArea', data?.free_trial?.shift());
+        (data?.fuctact || [])[0] && commit('setFunfactArea', data?.fuctact?.shift());
+        data?.feature && commit('setFeatureArea', data?.feature);
+        (data?.free_trial || [])[0] && commit('setFreeTrialArea', data?.free_trial?.shift());
+        (data?.feedback || [])[0] && commit('setFeedback', data?.feedback?.shift());
+        (data?.blog || [])[0] && commit('setBlog', data?.blog?.shift());
+        (data?.pricing || [])[0] && commit('setPricingArea', data?.pricing?.shift());
+        data?.seo && commit('setHomeSeo', data?.seo);
 
         (data?.main_banner || []).map((item) => {
             if (item.__component === 'sections.register-form-section') {
@@ -71,14 +89,28 @@ const getters = {
     getRegisterArea: (state) => {
         return state.registerArea;
     },
+    getFeedbackArea: (state) => {
+        return state.feedback || {};
+    },
     getFunfactArea: (state) => {
         return state.funfact || {};
     },
     getFeatureArea: (state) => {
         return state.feature || [];
     },
+    getPricingArea: (state) => {
+        console.log(state.pricing);
+
+        return state.pricing || {};
+    },
+    getBlogArea: (state) => {
+        return state.blog || {};
+    },
     getFreeTrialArea: (state) => {
         return state.freeTrial || {};
+    },
+    getHomeSeo: (state) => {
+        return core.coreSeo(state.homeSeo);
     }
 };
 

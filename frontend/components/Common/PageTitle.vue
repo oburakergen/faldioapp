@@ -2,8 +2,9 @@
   <div class="page-title-area">
     <div class="d-table">
       <div class="d-table-cell">
-        <div class="container">
-          <h2>{{ pageTitle }}</h2>
+        <div id="breadcrumb" class="container">
+          <h2>{{ getCurrentMenu?.title }}</h2>
+          <div class="text-muted mt-2" v-html=" getCurrentMenu?.detail" />
         </div>
       </div>
     </div>
@@ -38,6 +39,18 @@
 <script>
 export default {
     name: 'PageTitle',
-    props: ['pageTitle']
+    computed: {
+        getCurrentMenu () {
+            return this.$store.state.menu.currentMenu;
+        }
+    },
+    watch: {
+        $route (to) {
+            this.$store.dispatch('menu/currentMenu', to.path);
+        }
+    },
+    mounted () {
+        this.$store.dispatch('menu/currentMenu', this.$route.path);
+    }
 };
 </script>

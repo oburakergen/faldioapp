@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageTitle page-title="Contact Us" />
+    <PageTitle />
     <ContactInfo :contact="contact" />
     <ContactArea :contact="contact" />
   </div>
@@ -27,9 +27,6 @@ export default {
         seo () {
             return this.$store.getters['getContactSeo'];
         }
-    },
-    beforeMount () {
-
     }
 };
 </script>

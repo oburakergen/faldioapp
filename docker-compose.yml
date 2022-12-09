@@ -74,20 +74,6 @@ services:
     networks:
       - qr-mono-network
 
-  mysql:
-    image: mysql:8.0
-    env_file:
-      - ./mysql/mysql.env
-    container_name: "mysql"
-    restart: unless-stopped
-    ports:
-      - "3306:3306"
-    depends_on:
-      - mysql_master
-    volumes:
-      - ./mysql/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf
-      - ./mysql/data:/var/lib/mysql
-
 networks:
   qr-mono-network:
     name: qrMonoNetwork

@@ -20,14 +20,9 @@
       "repeatable": false,
       "component": "components.button-line"
     },
-    "pricing_detail": {
-      "type": "component",
-      "repeatable": true,
-      "component": "components.pricing-plan-detail"
-    },
-    "pricing_table": {
+    "pricings": {
       "type": "relation",
-      "relation": "oneToOne",
+      "relation": "oneToMany",
       "target": "api::pricing.pricing"
     }
   }

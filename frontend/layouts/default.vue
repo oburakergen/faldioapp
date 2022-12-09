@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Nuxt />
+    <Nuxt keep-alive :keep-alive-props="{ exclude: ['modal'], max:3 }" />
     <Header />
     <PreLoader />
     <Footer />

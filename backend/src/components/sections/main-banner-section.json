@@ -28,6 +28,13 @@
       "type": "component",
       "repeatable": true,
       "component": "components.boxes-area"
+    },
+    "photo": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
     }
   }
 }

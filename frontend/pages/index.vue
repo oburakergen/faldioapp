@@ -2,11 +2,15 @@
   <div>
     <MainBanner />
     <BoxesArea />
+    <!--    yapılmadı-->
     <TopUser />
+    <!--    yapılmadı-->
     <Feedback />
     <Funfacts />
     <Features />
+    <!--    yapılmadı-->
     <Pricing />
+    <!--    yapılmadı-->
     <Blog />
     <StartYourFreeTrial />
   </div>
@@ -36,8 +40,18 @@ export default {
         Features
     },
     async fetch () {
-        await this.$store.dispatch('home/getHomePage',
-            '?populate=deep');
+        if (!this.$store?.state?.home?.funfact?.id) {
+            await this.$store.dispatch('home/getHomePage',
+                '?populate=deep');
+        }
+    },
+    head () {
+        return this.seo;
+    },
+    computed: {
+        seo () {
+            return this.$store.getters['home/getHomeSeo'];
+        }
     }
 
 };

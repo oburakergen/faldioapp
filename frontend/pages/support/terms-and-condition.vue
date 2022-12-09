@@ -8,7 +8,7 @@
 import PageTitle from '~/components/Common/PageTitle.vue';
 
 export default {
-    name: 'Faq',
+    name: 'TermsAndCondition',
     components: { PageTitle }
 };
 </script>

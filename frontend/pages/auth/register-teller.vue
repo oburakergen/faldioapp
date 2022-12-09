@@ -1,12 +1,15 @@
 <template>
   <div>
-    Teller
+    <PageTitle />
   </div>
 </template>
 
 <script>
+import PageTitle from '~/components/Common/PageTitle.vue';
+
 export default {
-    name: 'RegisterTeller'
+    name: 'RegisterTeller',
+    components: { PageTitle }
 };
 </script>
 

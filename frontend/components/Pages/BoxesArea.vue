@@ -1,25 +1,25 @@
 <template>
-  <!-- Start Boxes Area -->
-  <div class="boxes-area">
-    <div class="container">
-      <div class="row">
-        <div
+  <div v-if="boxesArea.length > 0" class="boxes-area">
+    <b-container>
+      <b-row>
+        <b-col
           v-for="item in boxesArea"
           :key="item.id"
-          :class="'col-lg-' + parseInt(12 / boxesArea.length ) + ' col-md-6 col-sm-6'"
+          md="6"
+          sm="6"
+          :lg="parseInt(12 / boxesArea.length )"
         >
           <div :class="'single-box ' + item.class">
             <div class="icon">
               <feather :type="item.icon" />
             </div>
-            <h3>{{ item.title }}</h3>
+            <div>{{ item.title }}</div>
             <p> {{ item.detail }} </p>
           </div>
-        </div>
-      </div>
-    </div>
+        </b-col>
+      </b-row>
+    </b-container>
   </div>
-  <!-- End Boxes Area -->
 </template>
 
 <script>

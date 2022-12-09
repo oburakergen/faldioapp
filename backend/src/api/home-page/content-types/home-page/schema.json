@@ -29,17 +29,6 @@
       ],
       "required": false
     },
-    "top_user": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "dynamiczone",
-      "components": [
-        "sections.top-user-section"
-      ]
-    },
     "feedback": {
       "pluginOptions": {
         "i18n": {

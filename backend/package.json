@@ -19,7 +19,6 @@
     "@strapi/provider-upload-aws-s3": "^4.5.3",
     "@strapi/strapi": "4.5.3",
     "mysql": "2.18.1",
-    "strapi-plugin-fcm": "^1.0.5",
     "strapi-plugin-measurement-protocol": "^1.0.1",
     "strapi-plugin-menus": "^1.1.0",
     "strapi-plugin-populate-deep": "^1.1.2",

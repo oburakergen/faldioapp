@@ -1,22 +1,23 @@
 <template>
-  <header id="header" :class="['headroom', {'is-sticky': isSticky}]">
+  <header id="header" :class="['headroom', {'is-sticky': isSticky}]" aria-label="Header">
+    <!-- header content -->
     <div class="startp-nav">
-      <div class="container">
-        <nav class="navbar navbar-expand-md navbar-light">
-          <NuxtLink class="navbar-brand" to="/">
+      <b-container>
+        <b-navbar toggleable="md" type="light">
+          <b-navbar-brand href="/">
             <img src="~/assets/img/logo.png" alt="logo">
-          </NuxtLink>
+          </b-navbar-brand>
 
           <b-navbar-toggle target="navbarSupportedContent" />
 
           <b-collapse id="navbarSupportedContent" class="collapse navbar-collapse mean-menu" is-nav>
-            <ul class="navbar-nav nav ml-auto">
+            <b-navbar-nav class="nav ml-auto">
               <li v-for="(menu, index) in menus" :key="index" class="nav-item">
                 <NuxtLink :to="menu.url" class="nav-link">
                   {{ menu.title }}
                 </NuxtLink>
               </li>
-            </ul>
+            </b-navbar-nav>
           </b-collapse>
 
           <div v-if="register.length > 0" class="others-option">
@@ -29,9 +30,10 @@
               {{ item.title }}
             </nuxt-link>
           </div>
-        </nav>
-      </div>
+        </b-navbar>
+      </b-container>
     </div>
+    <!-- header content -->
   </header>
 </template>
 

@@ -1,9 +1,9 @@
-import * as process from 'process';
+const PRIMARY_HOSTS = process.env.CSP_URL;
 
 export default {
     head: {
-        titleTemplate: '%s - fal',
-        title: 'fal',
+        titleTemplate: '%s - faldio',
+        title: 'faldio',
         htmlAttrs: {
             lang: 'tr'
         },
@@ -11,12 +11,12 @@ export default {
             { charset: 'utf-8' },
             { name: 'viewport', content: 'width=device-width, initial-scale=1' },
             { hid: 'description', name: 'description', content: process.env.npm_package_description || '' },
-            { hid: 'og:title', name: 'og:title', content: 'Laraplay | Dashboard' },
-            { hid: 'og:locale', name: 'og:locale', content: 'tr_TR' },
+            { hid: 'og:title', name: 'og:title', content: 'Faldio | Dashboard' },
+            { hid: 'og:locale', name: 'og:locale', content: 'tr-TR' },
             { hid: 'og:url', name: 'og:url', content: process.env.BASE_URL },
             { hid: 'og:type', name: 'og:type', content: 'website' },
-            { hid: 'og:description', name: 'og:description', content: 'Laraplay Admin Dashboard' },
-            { name: 'format-detection', content: 'telephone=no' }
+            { name: 'format-detection', content: 'telephone=yes' },
+            { httpEquiv: 'Content-Security-Policy' }
         ],
         script: [
             { hid: 'lap.js', src: '/lap.js', type: 'text/javascript' }
@@ -26,6 +26,8 @@ export default {
         ],
         link: [
             { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
+            { rel: 'alternate', hreflang: 'tr', href: process.env.API_URL },
+            { rel: 'canonical', href: process.env.API_URL },
             {
                 rel: 'stylesheet',
                 href: 'https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,' +
@@ -76,10 +78,59 @@ export default {
         { src: '~/plugins/feather-icons', ssr: false },
         { src: '~/plugins/vue-feather', ssr: false },
         { src: '~/plugins/v-wow', ssr: false },
-        { src: '~/plugins/vue-toastification', ssr: false }
+        { src: '~/plugins/vue-toastification', ssr: false },
+        '~/plugins/directive.client.js'
     ],
 
-    // Globally configure <nuxt-link> default active class.
+    // Auto import components: https://go.nuxtjs.dev/config-components
+    components: true,
+
+    pageTransition: 'fade',
+
+    // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
+    buildModules: [],
+
+    // Modules: https://go.nuxtjs.dev/config-modules
+    modules: [
+    // https://go.nuxtjs.dev/bootstrap
+        'bootstrap-vue/nuxt',
+        '@nuxtjs/axios',
+        '@nuxtjs/dotenv',
+        'nuxt-helmet',
+        '@nuxtjs/sentry',
+        [
+            '@nuxtjs/firebase',
+            {
+                config: {
+                    apiKey: 'AIzaSyD50AjSiME7VRxQRq_xDMR8ZTTVYCRI7S4',
+                    authDomain: 'faldio.firebaseapp.com',
+                    projectId: 'faldio',
+                    storageBucket: 'faldio.appspot.com',
+                    messagingSenderId: '995370189429',
+                    appId: '1:995370189429:web:346b5390f3604c25932e3c',
+                    measurementId: 'G-TYS4KJLLYK'
+                },
+                services: {
+                    auth: true,
+                    analytics: {
+                        collectionEnabled: true // default
+                    },
+                    messaging: {
+                        createServiceWorker: true,
+                        actions: [
+                            {
+                                action: 'randomName',
+                                url: 'randomUrl'
+                            }
+                        ],
+                        // eslint-disable-next-line
+                        fcmPublicVapidKey: 'BP6NNP9ZugrkMghjlhEA81n3OJRRHaGCISXk1co4P4C0RX7SOIkXGeBl3zszNdjZ5jioVKrnkJrodTtRnZJxkmI'
+                    }
+                }
+            }
+        ]
+    ],
+
     router: {
         linkPrefetchedClass: 'preloaded',
         linkActiveClass: 'active',
@@ -120,28 +171,54 @@ export default {
         }
     },
 
-    // Auto import components: https://go.nuxtjs.dev/config-components
-    components: true,
-
-    // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-    buildModules: [],
-
-    // Modules: https://go.nuxtjs.dev/config-modules
-    modules: [
-    // https://go.nuxtjs.dev/bootstrap
-        'bootstrap-vue/nuxt',
-        '@nuxtjs/axios',
-        '@nuxtjs/dotenv',
-        '@nuxtjs/sentry'
-    ],
+    render: {
+        csp: {
+            reportOnly: true,
+            hashAlgorithm: 'sha256',
+            policies: {
+                'default-src': ["'self'"],
+                'img-src': ['https:', "'self'", '*.google-analytics.com', 'data:', 'blob:',
+                    'fals3-bucket.s3.eu-central-1.amazonaws.com'],
+                'media-src': ['https:', "'self'", '*.google-analytics.com', 'data:', 'blob:',
+                    'fals3-bucket.s3.eu-central-1.amazonaws.com'],
+                'font-src': ["'self'", '*.gstatic.com'],
+                'worker-src': ["'self'", 'blob:', PRIMARY_HOSTS],
+                'style-src': ["'self'", "'unsafe-inline'", PRIMARY_HOSTS, '*.googleapis.com'],
+                'script-src': [
+                    "'self'",
+                    "'unsafe-inline'",
+                    PRIMARY_HOSTS,
+                    'sentry.io',
+                    '*.sentry-cdn.com',
+                    '*.google-analytics.com',
+                    '*.faldio.com',
+                    '*.googletagmanager.com',
+                    '*.googleapis.com'
+                ],
+                'connect-src': [PRIMARY_HOSTS, '*.sentry.io', '*.google-analytics.com', '*.faldio.com', '*.googleapis.com'],
+                'form-action': ["'self'", '*.faldio.com'],
+                'frame-ancestors': ["'none'"],
+                'object-src': ["'none'"],
+                'base-uri': [PRIMARY_HOSTS],
+                'report-uri': [
+                    'https://o4504284154757120.ingest.sentry.io/api/4504284172582914/' +
+                    'security/?sentry_key=933089208a28448687fdb162a7eefdd3'
+                ]
+            }
+        }
+    },
 
     sentry: {
         dsn: process.env.SENTRY_DSN, // Enter your project's DSN here
-        // Additional Module Options go here
-        // https://sentry.nuxtjs.org/sentry/options
+        debug: process.env.NODE_ENV === 'development',
+        environment: process.env.SENTRY_ENVIRONMENT,
         config: {
-            // Add native Sentry config here
-            // https://docs.sentry.io/platforms/javascript/guides/vue/configuration/options/
+            injectMock: true,
+            injectLoadHook: false,
+            mockApiMethods: true,
+            chunkName: 'sentry',
+            webpackPrefetch: false,
+            webpackPreload: false
         }
     },
 

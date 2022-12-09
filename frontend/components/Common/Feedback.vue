@@ -1,12 +1,11 @@
 <template>
-  <div class="feedback-area ptb-80 bg-f7fafd">
+  <div v-if="feedback.title" class="feedback-area ptb-80 bg-f7fafd">
     <div class="container">
       <div class="section-title">
-        <h2>What users Saying</h2>
+        <h2>{{ feedback.title }}</h2>
         <div class="bar" />
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua.
+          {{ feedback.detail }}
         </p>
       </div>
 
@@ -18,130 +17,30 @@
               :options="slickOptions"
               :as-nav-for="$refs.slick2"
             >
-              <div class="item">
+              <div v-for="item in feedback.users" :key="item.id" class="item">
                 <div class="single-feedback">
                   <div class="client-img">
-                    <img src="~/assets/img/client-image/1.jpg" alt="image">
+                    <picture>
+                      <source
+                        :media="'(min-width:' + item?.photo?.data?.attributes?.width +'px)'"
+                        :srcset="item?.photo?.data?.attributes?.url"
+                      >
+                      <source
+                        v-for="(size, index) in Object.values(item?.photo?.data?.attributes?.formats || {})"
+                        :key="index"
+                        :media="'(min-width:' + size.width +'px)'"
+                        :srcset="size.url"
+                      >
+                      <img
+                        :src="item?.photo?.data?.attributes?.url"
+                        :alt="item?.photo?.data?.attributes?.alternativeText"
+                        :title="item?.photo?.data?.attributes?.caption"
+                      >
+                    </picture>
                   </div>
-
-                  <h3>John Lucy</h3>
-                  <span>Web Developer</span>
+                  <h3>{{ item.name }}</h3>
                   <p>
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas
-                    accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="single-feedback">
-                  <div class="client-img">
-                    <img src="~/assets/img/client-image/2.jpg" alt="image">
-                  </div>
-
-                  <h3>John Smith</h3>
-                  <span>Web Developer</span>
-                  <p>
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-                    lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                    eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="single-feedback">
-                  <div class="client-img">
-                    <img src="~/assets/img/client-image/3.jpg" alt="image">
-                  </div>
-
-                  <h3>Maxwel Warner</h3>
-                  <span>Web Developer</span>
-                  <p>
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                    facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="single-feedback">
-                  <div class="client-img">
-                    <img src="~/assets/img/client-image/4.jpg" alt="image">
-                  </div>
-
-                  <h3>Ross Taylor</h3>
-                  <span>Web Developer</span>
-                  <p>
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                    facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="single-feedback">
-                  <div class="client-img">
-                    <img src="~/assets/img/client-image/5.jpg" alt="image">
-                  </div>
-
-                  <h3>James Anderson</h3>
-                  <span>Web Developer</span>
-                  <p>
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-                    lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="single-feedback">
-                  <div class="client-img">
-                    <img src="~/assets/img/client-image/1.jpg" alt="image">
-                  </div>
-
-                  <h3>Steven Smith</h3>
-                  <span>Web Developer</span>
-                  <p>
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                    facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="single-feedback">
-                  <div class="client-img">
-                    <img src="~/assets/img/client-image/2.jpg" alt="image">
-                  </div>
-
-                  <h3>Steven Lucy</h3>
-                  <span>Web Developer</span>
-                  <p>
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan
-                    lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore magna aliqua.
-                  </p>
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="single-feedback">
-                  <div class="client-img">
-                    <img src="~/assets/img/client-image/3.jpg" alt="image">
-                  </div>
-
-                  <h3>John Terry</h3>
-                  <span>Web Developer</span>
-                  <p>
-                    Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel
-                    facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.
+                    {{ item.detail }}
                   </p>
                 </div>
               </div>
@@ -156,98 +55,52 @@
               :as-nav-for="$refs.slick"
               :options="slickOptions2"
             >
-              <div class="item">
+              <div v-for="item in feedback.users" :key="item.id" class="item">
                 <div class="img-fill">
-                  <img src="~/assets/img/client-image/1.jpg" alt="client">
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="img-fill">
-                  <img src="~/assets/img/client-image/2.jpg" alt="client">
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="img-fill">
-                  <img src="~/assets/img/client-image/3.jpg" alt="client">
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="img-fill">
-                  <img src="~/assets/img/client-image/4.jpg" alt="client">
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="img-fill">
-                  <img src="~/assets/img/client-image/5.jpg" alt="client">
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="img-fill">
-                  <img src="~/assets/img/client-image/1.jpg" alt="client">
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="img-fill">
-                  <img src="~/assets/img/client-image/2.jpg" alt="client">
-                </div>
-              </div>
-
-              <div class="item">
-                <div class="img-fill">
-                  <img src="~/assets/img/client-image/3.jpg" alt="client">
+                  <picture>
+                    <source
+                      :media="'(min-width:' + item?.photo?.data?.attributes?.width +'px)'"
+                      :srcset="item?.photo?.data?.attributes?.url"
+                    >
+                    <source
+                      v-for="(size, index) in Object.values(item?.photo?.data?.attributes?.formats || {})"
+                      :key="index"
+                      :media="'(min-width:' + size.width +'px)'"
+                      :srcset="size.url"
+                    >
+                    <img
+                      :src="item?.photo?.data?.attributes?.url"
+                      :alt="item?.photo?.data?.attributes?.alternativeText"
+                      :title="item?.photo?.data?.attributes?.caption"
+                    >
+                  </picture>
                 </div>
               </div>
             </slick>
           </div>
 
-          <button class="prev-arrow slick-arrow">
+          <b-button name="prev-arrow" class="prev-arrow slick-arrow">
             <feather type="arrow-left" />
-          </button>
+          </b-button>
 
-          <button class="next-arrow slick-arrow">
+          <b-button name="next-arrow" class="next-arrow slick-arrow">
             <feather type="arrow-right" />
-          </button>
+          </b-button>
         </div>
       </div>
     </div>
-
-    <div class="shape1">
-      <img src="~/assets/img/shape1.png" alt="shape">
-    </div>
-    <div class="shape2 rotateme">
-      <img src="~/assets/img/shape2.svg" alt="shape">
-    </div>
-    <div class="shape4">
-      <img src="~/assets/img/shape4.svg" alt="shape">
-    </div>
-    <div class="shape5">
-      <img src="~/assets/img/shape5.png" alt="shape">
-    </div>
-    <div class="shape6 rotateme">
-      <img src="~/assets/img/shape4.svg" alt="shape">
-    </div>
-    <div class="shape7">
-      <img src="~/assets/img/shape4.svg" alt="shape">
-    </div>
-    <div class="shape8 rotateme">
-      <img src="~/assets/img/shape2.svg" alt="shape">
-    </div>
+    <Shape />
   </div>
 </template>
 
 <script>
 import Slick from 'vue-slick';
 import 'slick-carousel/slick/slick.css';
+import Shape from '@/components/Helper/Shape.vue';
 
 export default {
     name: 'Feedback',
-    components: { Slick },
+    components: { Shape, Slick },
     data () {
         return {
             slickOptions: {
@@ -275,7 +128,11 @@ export default {
             }
         };
     },
-
+    computed: {
+        feedback () {
+            return this.$store.getters['home/getFeedbackArea'];
+        }
+    },
     methods: {
         next () {
             this.$refs.slick.next();

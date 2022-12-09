@@ -1,12 +1,12 @@
 <template>
   <div>
-    Service
+    Service List
   </div>
 </template>
 
 <script>
 export default {
-    name: 'Service'
+    name: 'ServiceList'
 };
 </script>
 

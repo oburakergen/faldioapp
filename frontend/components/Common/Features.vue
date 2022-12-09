@@ -5,19 +5,30 @@
       :key="item.id"
       :class="'iot-features-area ptb-80 ' + item.class"
     >
-      <div class="container">
-        <div class="row align-items-center">
-          <div v-if="item.image_loc === 'left'" class="col-lg-6 iot-features-image">
-            <img
-              v-wow
-              :src="item.photo.data.attributes.url"
-              :alt="item.photo.data.attributes.alternativeText"
-              :title="item.photo.data.attributes.caption"
-              class="wow fadeInUp"
-              data-wow-delay="0.6s"
-            >
-            <figcaption>{{ item.photo.data.attributes.caption }}</figcaption>
-          </div>
+      <b-container>
+        <b-row class="align-items-center">
+          <b-col v-if="item.image_loc === 'left'" lg="6" class="iot-features-image">
+            <picture>
+              <source
+                :media="'(min-width:' + item?.photo?.data?.attributes?.width +'px)'"
+                :srcset="item?.photo?.data?.attributes?.url"
+              >
+              <source
+                v-for="(size, index) in Object.values(item?.photo?.data?.attributes?.formats || {})"
+                :key="index"
+                :media="'(min-width:' + size.width +'px)'"
+                :srcset="size.url"
+              >
+              <img
+                v-wow
+                :src="item?.photo?.data?.attributes?.url"
+                :alt="item?.photo?.data?.attributes?.alternativeText"
+                :title="item?.photo?.data?.attributes?.caption"
+                class="wow fadeInUp"
+                data-wow-delay="0.6s"
+              >
+            </picture>
+          </b-col>
           <div class="col-lg-6 iot-features-content">
             <h3>{{ item.title }}</h3>
             <div v-html="item.detail" />
@@ -25,19 +36,30 @@
               {{ item.button.title }}
             </nuxt-link>
           </div>
-          <div v-if="item.image_loc === 'right'" class="col-lg-6 iot-features-image">
-            <img
-              v-wow
-              :src="item.photo.data.attributes.url"
-              :alt="item.photo.data.attributes.alternativeText"
-              :title="item.photo.data.attributes.caption"
-              class="wow fadeInUp"
-              data-wow-delay="0.6s"
-            >
-            <figcaption>{{ item.photo.data.attributes.caption }}</figcaption>
-          </div>
-        </div>
-      </div>
+          <b-col v-if="item.image_loc === 'right'" lg="6" class="iot-features-image">
+            <picture>
+              <source
+                :media="'(min-width:' + item?.photo?.data?.attributes?.width +'px)'"
+                :srcset="item?.photo?.data?.attributes?.url"
+              >
+              <source
+                v-for="(size, index) in Object.values(item?.photo?.data?.attributes?.formats || {})"
+                :key="index"
+                :media="'(min-width:' + size.width +'px)'"
+                :srcset="size.url"
+              >
+              <img
+                v-wow
+                :src="item?.photo?.data?.attributes?.url"
+                :alt="item?.photo?.data?.attributes?.alternativeText"
+                :title="item?.photo?.data?.attributes?.caption"
+                class="wow fadeInUp"
+                data-wow-delay="0.6s"
+              >
+            </picture>
+          </b-col>
+        </b-row>
+      </b-container>
     </div>
   </div>
 </template>

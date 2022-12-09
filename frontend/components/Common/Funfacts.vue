@@ -1,6 +1,6 @@
 <template>
   <div v-if="funfactArea.title" class="funfacts-area ptb-80">
-    <div class="container">
+    <b-container>
       <div class="section-title">
         <h2>{{ funfactArea.title }}</h2>
         <div class="bar" />
@@ -9,14 +9,21 @@
         </p>
       </div>
 
-      <div v-if="funfactArea.counter" class="row">
-        <div v-for="item in funfactArea.counter" :key="item.id" class="col-lg-3 col-md-3 col-6 col-sm-3">
+      <b-row v-if="funfactArea.counter">
+        <b-col
+          v-for="item in funfactArea.counter"
+          :key="item.id"
+          lg="3"
+          md="3"
+          sm="3"
+          cols="6"
+        >
           <div class="funfact">
             <h3><span>{{ item.count }}</span>+</h3>
             <p>{{ item.title }}</p>
           </div>
-        </div>
-      </div>
+        </b-col>
+      </b-row>
 
       <div v-if="funfactArea.button?.title" class="contact-cta-box">
         <h3>{{ funfactArea.button_title }}</h3>
@@ -27,14 +34,25 @@
       </div>
 
       <div v-if="funfactArea.photo" class="map-bg">
-        <img
-          :src="funfactArea.photo.data.attributes.url"
-          :alt="funfactArea.photo.data.attributes.alternativeText"
-          :title="funfactArea.photo.data.attributes.caption"
-        >
-        <figcaption>{{ funfactArea.photo.data.attributes.caption }}</figcaption>
+        <picture>
+          <source
+            :media="'(min-width:' + funfactArea?.photo?.data?.attributes?.width +'px)'"
+            :srcset="funfactArea?.photo?.data?.attributes?.url"
+          >
+          <source
+            v-for="(size, index) in Object.values(funfactArea?.photo?.data?.attributes?.formats || {})"
+            :key="index"
+            :media="'(min-width:' + size.width +'px)'"
+            :srcset="size.url"
+          >
+          <img
+            :src="funfactArea?.photo?.data?.attributes?.url"
+            :alt="funfactArea?.photo?.data?.attributes?.alternativeText"
+            :title="funfactArea?.photo?.data?.attributes?.caption"
+          >
+        </picture>
       </div>
-    </div>
+    </b-container>
   </div>
 </template>
 

@@ -26,9 +26,14 @@
     "plan": {
       "type": "enumeration",
       "enum": [
-        "Monthly",
-        "Yearly"
+        "Aylık",
+        "Yıllık"
       ]
+    },
+    "pricing_detail": {
+      "type": "component",
+      "repeatable": true,
+      "component": "components.pricing-plan-detail"
     }
   }
 }

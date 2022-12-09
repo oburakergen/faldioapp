@@ -1,30 +1,3 @@
-/*
-@File: Pasona Template Styles
-
-* This file contains the styling for the actual template, this
-is the file you need to edit to change the look of the
-template.
-
-This files table contents are outlined below>>>>>
-
-*******************************************
-*******************************************
-
-==== INDEX PAGE CSS
-
-** - Big Data Analytics Banner CSS
-** - What We Do CSS
-** - Features CSS
-** - Discover CSS
-** - Industries Serve CSS
-** - Bigdata Services CSS
-*/
-/*================================================
-Default CSS
-=================================================*/
-/*=============================
-Big Data Analytics Banner CSS
-===============================*/
 .bigdata-analytics-banner {
   background-image: url(../img/bigdata-analytics/main-banner.jpg);
   background-position: center center;
@@ -491,6 +464,7 @@ Newsletter CSS
 .newsletter-area {
   position: relative;
   z-index: 1;
+  background: linear-gradient(135deg, #43e794 0%, #23bdb8 100%);
 }
 
 .newsletter-area .container-fluid {

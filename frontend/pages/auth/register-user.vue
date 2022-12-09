@@ -1,12 +1,15 @@
 <template>
   <div>
-    User
+    <PageTitle />
   </div>
 </template>
 
 <script>
+import PageTitle from '~/components/Common/PageTitle.vue';
+
 export default {
-    name: 'RegisterUser'
+    name: 'RegisterUser',
+    components: { PageTitle }
 };
 </script>
 

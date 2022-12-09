@@ -1,6 +1,6 @@
 <template>
   <div>
-    <PageTitle page-title="About Us" />
+    <PageTitle />
     <div class="agency-about-area ptb-80">
       <div class="container">
         <div class="row align-items-center">

@@ -1,19 +1,15 @@
 <template>
   <div>
-    <PageTitle page-title="About Us" />
-    <Services />
+    <PageTitle />
   </div>
 </template>
 
 <script>
-import Services from '../../components/Common/Services';
-import PageTitle from '../../components/Common/PageTitle';
+import PageTitle from '@/components/Common/PageTitle.vue';
 
 export default {
-    components: {
-        PageTitle,
-        Services
-    }
+    name: 'Service',
+    components: { PageTitle }
 };
 </script>
 
