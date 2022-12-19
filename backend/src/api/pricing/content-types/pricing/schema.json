@@ -10,30 +10,59 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
       "type": "string",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "detail": {
       "type": "text",
-      "required": true
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "price": {
-      "type": "decimal"
+      "type": "decimal",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "plan": {
       "type": "enumeration",
       "enum": [
         "Aylık",
         "Yıllık"
-      ]
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "pricing_detail": {
       "type": "component",
       "repeatable": true,
-      "component": "components.pricing-plan-detail"
+      "component": "components.pricing-plan-detail",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

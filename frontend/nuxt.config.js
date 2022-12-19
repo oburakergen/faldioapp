@@ -67,7 +67,8 @@ export default {
         '~/assets/css/blog.scss',
         '~/assets/css/blog-details.scss',
         '~/assets/css/contact.scss',
-        '~/assets/css/responsive.scss'
+        '~/assets/css/responsive.scss',
+        '~/assets/css/topbar.css'
     ],
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -83,7 +84,7 @@ export default {
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
-    components: true,
+    components: false,
 
     pageTransition: 'fade',
 
@@ -176,7 +177,7 @@ export default {
             reportOnly: true,
             hashAlgorithm: 'sha256',
             policies: {
-                'default-src': ["'self'"],
+                'default-src': ["'self'", '*.firebaseapp.com'],
                 'img-src': ['https:', "'self'", '*.google-analytics.com', 'data:', 'blob:',
                     'fals3-bucket.s3.eu-central-1.amazonaws.com'],
                 'media-src': ['https:', "'self'", '*.google-analytics.com', 'data:', 'blob:',
@@ -193,7 +194,8 @@ export default {
                     '*.google-analytics.com',
                     '*.faldio.com',
                     '*.googletagmanager.com',
-                    '*.googleapis.com'
+                    '*.googleapis.com',
+                    '*.google.com'
                 ],
                 'connect-src': [PRIMARY_HOSTS, '*.sentry.io', '*.google-analytics.com', '*.faldio.com', '*.googleapis.com'],
                 'form-action': ["'self'", '*.faldio.com'],

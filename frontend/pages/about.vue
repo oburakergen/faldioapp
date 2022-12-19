@@ -5,9 +5,7 @@
       <div class="container">
         <div class="row align-items-center">
           <div class="col-md-12">
-            <div class="agency-about-content">
-              asdasd
-            </div>
+            <div v-html="about" />
           </div>
         </div>
       </div>
@@ -22,6 +20,17 @@ export default {
     name: 'About',
     components: {
         PageTitle
+    },
+    async fetch () {
+        await this.$store.dispatch('about/getAboutPage', '?populate=deep');
+    },
+    computed: {
+        about () {
+            return this.$store.state.about.aboutPage;
+        },
+        seo () {
+            return this.$store.getters['home/getHomeSeo'];
+        }
     }
 };
 </script>

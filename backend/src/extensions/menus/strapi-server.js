@@ -10,6 +10,9 @@ module.exports = (plugin) => {
         count: {
             type: 'integer'
         },
+        special_order: {
+            type: 'integer'
+        },
         detail: {
             type: 'richtext'
         },
@@ -19,6 +22,11 @@ module.exports = (plugin) => {
                 'btn-light',
                 'btn-primary'
             ]
+        },
+        photo: {
+            type: 'media',
+            allowedTypes: ['images'],
+            multiple: false
         }
     };
 

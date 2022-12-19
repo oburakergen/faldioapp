@@ -1,5 +1,5 @@
 <template>
-  <header id="header" :class="['headroom', {'is-sticky': isSticky}]" aria-label="Header">
+  <header id="header" :class="['headroom', {'is-sticky': isSticky, 'is-relative': !isSticky}]" aria-label="Header">
     <!-- header content -->
     <div class="startp-nav">
       <b-container>
@@ -38,6 +38,7 @@
 </template>
 
 <script>
+
 export default {
     name: 'Header',
     data () {

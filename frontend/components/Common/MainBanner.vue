@@ -4,16 +4,16 @@
       <div class="d-table-cell">
         <b-container>
           <b-row class="h-100 justify-content-center align-items-center">
-            <b-col lg="5">
+            <b-col md="5">
               <div class="hero-content">
                 <h1>{{ mainBanner.title }}</h1>
                 <div v-html="mainBanner.detail" />
-                <nuxt-link :to="mainBanner.button.url" :class="mainBanner.button.class">
+                <nuxt-link  v-if="mainBanner.button" :to="mainBanner.button.url" :class="mainBanner.button.class">
                   {{ mainBanner.button.title }}
                 </nuxt-link>
               </div>
             </b-col>
-            <b-col lg="5" offset-lg="1">
+            <b-col md="5" offset-md="1">
               <div class="banner-form ml-3">
                 <b-form id="register-user" aria-label="Kayıt Ol" @submit.prevent="createRegisterTeller">
                   <b-form-group

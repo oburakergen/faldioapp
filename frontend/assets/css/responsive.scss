@@ -10,7 +10,7 @@ $value_six: 1199px;
 $value_seven: 1550px;
 
 @media only #{$media} and ($feature_max : $value_two) {
-  .mobile-type {
+  .mobile-type, .top-bar .text-top {
     display: none;
   }
   .newsletter-content {

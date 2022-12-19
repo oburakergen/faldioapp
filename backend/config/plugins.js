@@ -40,6 +40,16 @@ module.exports = ({ env }) => ({
                         },
                         {
                             input: {
+                                label: 'Count',
+                                name: 'special_order',
+                                type: 'number'
+                            },
+                            grid: {
+                                col: 12
+                            }
+                        },
+                        {
+                            input: {
                                 label: 'Class',
                                 name: 'choose_class',
                                 type: 'select',
@@ -57,7 +67,18 @@ module.exports = ({ env }) => ({
                             grid: {
                                 col: 12
                             }
-                        },
+                        }
+                    ],
+                    media: [
+                        {
+                            input: {
+                                label: 'Media',
+                                name: 'photo',
+                                type: 'media'
+                            }
+                        }
+                    ],
+                    detail: [
                         {
                             input: {
                                 label: 'Detail',
@@ -68,7 +89,6 @@ module.exports = ({ env }) => ({
                                 col: 12
                             }
                         }
-
                     ]
                 }
             }

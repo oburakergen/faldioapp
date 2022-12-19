@@ -1,21 +1,26 @@
 <template>
   <div>
-    <Nuxt keep-alive :keep-alive-props="{ exclude: ['modal'], max:3 }" />
+    <Navbar />
     <Header />
+    <Nuxt keep-alive :keep-alive-props="{ exclude: ['modal'], max:3 }" />
     <PreLoader />
     <Footer />
   </div>
 </template>
 
 <script>
-import Header from './Header';
-import Footer from './Footer';
-import PreLoader from './PreLoader';
+import Header from '@/layouts/Header';
+import Footer from '@/layouts/Footer';
+import PreLoader from '@/layouts/PreLoader';
+import Navbar from '@/layouts/Navbar.vue';
 
 export default {
     name: 'App',
     components: {
-        Header, Footer, PreLoader
+        Navbar,
+        Header,
+        Footer,
+        PreLoader
     },
     async fetch () {
         await this.$store.dispatch('menu/getMenu',

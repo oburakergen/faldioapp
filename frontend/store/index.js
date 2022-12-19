@@ -2,7 +2,8 @@ const { core } = require('../core');
 
 const state = () => ({
     contact: [],
-    contactSeo: {}
+    contactSeo: {},
+    lang: 'en'
 });
 
 const mutations = {
@@ -23,6 +24,7 @@ const actions = {
         commit('setContact', response?.data?.attributes?.contact);
         commit('setContactSeo', response?.data?.attributes?.seo);
     }
+
 };
 
 const getters = {
